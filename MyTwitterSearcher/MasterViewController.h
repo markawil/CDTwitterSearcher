@@ -7,11 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "CDTwitterSearcher.h"
 @class DetailViewController;
 
 @interface MasterViewController : UITableViewController
+<UISearchBarDelegate, CDTwitterSearchDelegate> {
+    CDTwitterSearcher *_twitterSearcher;
+    NSArray *_tweets;
+}
 
 @property (strong, nonatomic) DetailViewController *detailViewController;
+
+@property (nonatomic, retain) IBOutlet UISearchBar *searchbar;
 
 @end

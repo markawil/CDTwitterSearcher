@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 
 #import "MasterViewController.h"
+#import "CDTwitterSearcher.h"
 
 @implementation AppDelegate
 
@@ -24,6 +25,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    CDTwitterSearcher *twitterSearcher = [[CDTwitterSearcher alloc] init];
+    [twitterSearcher searchTwitter:@"xcode"];
+     
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     // Override point for customization after application launch.
 

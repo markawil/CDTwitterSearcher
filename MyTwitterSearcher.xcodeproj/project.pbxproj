@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C9A22BD1535276200DE4ED2 /* CDTweet.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C9A22BC1535276200DE4ED2 /* CDTweet.m */; };
 		2CFB5ADA1530C443006467CA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CFB5AD91530C443006467CA /* UIKit.framework */; };
 		2CFB5ADC1530C443006467CA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CFB5ADB1530C443006467CA /* Foundation.framework */; };
 		2CFB5ADE1530C443006467CA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CFB5ADD1530C443006467CA /* CoreGraphics.framework */; };
@@ -46,6 +47,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2C9A22BB1535276200DE4ED2 /* CDTweet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDTweet.h; sourceTree = "<group>"; };
+		2C9A22BC1535276200DE4ED2 /* CDTweet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDTweet.m; sourceTree = "<group>"; };
 		2CFB5AD51530C443006467CA /* MyTwitterSearcher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyTwitterSearcher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CFB5AD91530C443006467CA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		2CFB5ADB1530C443006467CA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -174,6 +177,8 @@
 				2CFB5B431533ADEE006467CA /* asi-http-request */,
 				2CFB5AE81530C443006467CA /* AppDelegate.h */,
 				2CFB5AE91530C443006467CA /* AppDelegate.m */,
+				2C9A22BB1535276200DE4ED2 /* CDTweet.h */,
+				2C9A22BC1535276200DE4ED2 /* CDTweet.m */,
 				2CFB5AEB1530C443006467CA /* MasterViewController.h */,
 				2CFB5AEC1530C443006467CA /* MasterViewController.m */,
 				2CFB5AEE1530C443006467CA /* DetailViewController.h */,
@@ -355,6 +360,7 @@
 				2CFB5B881533AFC0006467CA /* SBJsonUTF8Stream.m in Sources */,
 				2CFB5B891533AFC0006467CA /* SBJsonWriter.m in Sources */,
 				2CFB5B941533B1C8006467CA /* CDTwitterSearcher.m in Sources */,
+				2C9A22BD1535276200DE4ED2 /* CDTweet.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -472,6 +478,7 @@
 				2CFB5AFB1530C443006467CA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

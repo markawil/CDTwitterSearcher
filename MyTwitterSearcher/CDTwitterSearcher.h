@@ -7,7 +7,23 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ASIHTTPRequestDelegate.h"
 
-@interface CDTwitterSearcher : NSObject
+// define our protocol
+@protocol CDTwitterSearchDelegate <NSObject>
+
+@required
+
+- (void)searchDidCompleteWithResults:(NSArray *)results;
+
+@end
+
+@interface CDTwitterSearcher : NSObject<ASIHTTPRequestDelegate> {
+    
+}
+
+@property (nonatomic, assign) id<CDTwitterSearchDelegate> delegate;
+
+- (void)searchTwitter:(NSString *)searchTerm;
 
 @end

@@ -7,12 +7,14 @@
 //
 
 #import "MasterViewController.h"
-
+#import "CDTwitterSearcher.h"
 #import "DetailViewController.h"
+#import "CDTweet.h"
 
 @implementation MasterViewController
 
 @synthesize detailViewController = _detailViewController;
+@synthesize searchbar;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -22,9 +24,25 @@
     }
     return self;
 }
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)aSearchBar {
+    NSString *searchTerm = aSearchBar.text;
+    // dismiss the keyboard
+    [aSearchBar resignFirstResponder];
+    [_twitterSearcher searchTwitter:searchTerm];
+}
+
+- (void)searchDidCompleteWithResults:(NSArray *)results {
+    [_tweets release];
+    _tweets = [results retain];
+    [self.tableView reloadData];
+}
 							
 - (void)dealloc
 {
+    [searchbar release];
+    [_tweets release];
+    [_twitterSearcher release];
     [_detailViewController release];
     [super dealloc];
 }
@@ -41,6 +59,9 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    self.title = @"search twitter";
+    _twitterSearcher = [[CDTwitterSearcher alloc] init];
+    _twitterSearcher.delegate = self;
 }
 
 - (void)viewDidUnload
@@ -48,6 +69,13 @@
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
+    self.searchbar = nil;
+    [_twitterSearcher release];
+    _twitterSearcher = nil;
+    
+    [_tweets release];
+    _tweets = nil;
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -84,7 +112,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 1;
+    return [_tweets count];
 }
 
 // Customize the appearance of table view cells.
@@ -92,14 +120,20 @@
 {
     static NSString *CellIdentifier = @"Cell";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    UITableViewCell *cell = [tableView 
+                             dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        cell = [[[UITableViewCell alloc]
+                 initWithStyle:UITableViewCellStyleSubtitle 
+                 reuseIdentifier:CellIdentifier] autorelease];
+        cell.textLabel.font = [UIFont boldSystemFontOfSize:12];
+        cell.detailTextLabel.font = [UIFont systemFontOfSize:12];
     }
-
-    // Configure the cell.
-    cell.textLabel.text = NSLocalizedString(@"Detail", @"Detail");
+    
+    CDTweet *tweet = [_tweets objectAtIndex:indexPath.row];
+    cell.textLabel.text = tweet.author;
+    cell.detailTextLabel.text = tweet.text;
+    
     return cell;
 }
 
