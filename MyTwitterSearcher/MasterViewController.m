@@ -10,7 +10,7 @@
 #import "CDTwitterSearcher.h"
 #import "DetailViewController.h"
 #import "CDTweet.h"
-
+    
 @implementation MasterViewController
 
 @synthesize detailViewController = _detailViewController;
